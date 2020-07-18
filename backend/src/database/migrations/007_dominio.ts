@@ -2,9 +2,9 @@ import Knex from "knex"
 
 export async function up(knex: Knex) {
     return knex.schema.createTable("dominio", table => {
-        table.integer("ID").primary()
-        table.integer("Loja_ID").references("ID").inTable("loja")
-        table.string("Endereco", 100)
+        table.integer("ID").notNullable().primary()
+        table.integer("Loja_ID").notNullable().references("ID").inTable("loja")
+        table.string("Endereco", 100).notNullable()
     })
 }
 
