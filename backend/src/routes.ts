@@ -15,7 +15,7 @@ const routes = express.Router()
 
 // Normal routes
 routes.post("/loja-login", LojaController.login)
-routes.post("/loja-create", LojaController.login) // create
+routes.post("/loja-create", LojaController.create)
 
 // Auth routes
 routes.use(Auth)

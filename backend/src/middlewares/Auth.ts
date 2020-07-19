@@ -8,7 +8,7 @@ declare module "express-serve-static-core" {
     }
 }
 
-export default function Auth(req: Request, res: Response, next: NextFunction) {
+export default async function Auth(req: Request, res: Response, next: NextFunction) {
     const auth = req.headers.authorization
 
     if (!auth) 

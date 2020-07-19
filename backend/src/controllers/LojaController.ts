@@ -1,16 +1,20 @@
 import { Request, Response } from "express"
+import knex from "../database/connection"
 import "dotenv/config"
 
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
 class LojaController {
-    login(req: Request, res: Response) {
-        const { email, senha } = req.body
+    async login(req: Request, res: Response) {
+        const { Email, Senha } = req.body
         try {
-            const loja = { Senha: "query where email", ID: 3 }
+            const loja = await knex("loja").where({Email}).first()
 
-            const isPassword = bcrypt.compare(senha, loja.Senha)
+            if (!loja) 
+                return res.status(401).json({ "Message": "Wrong password" })
+
+            const isPassword = await bcrypt.compare(Senha, loja.Senha)
 
             if (!isPassword) {
                 return res.status(401).json({ "Message": "Wrong password" })
@@ -29,13 +33,17 @@ class LojaController {
             return res.status(500).send()
         }
     }
-    create(req: Request, res: Response) {
-        const { nome, email, senha } = req.body
-        const data = { nome, email, senha }
-
+    async create(req: Request, res: Response) {
+        const { Nome, Email, Senha } = req.body
+        const data = { Nome, Email, Senha, Ativada:false }
         try {
-            const newLojaID = {} // query
+           
+            const SenhaHash = await bcrypt.hash(Senha, 10)
 
+            data.Senha = SenhaHash      
+           
+            const newLojaID = await knex("loja").insert(data)
+            return res.send(newLojaID)
             const token = jwt.sign(
                 String(newLojaID),
                 String(process.env.APP_SECRET),
@@ -46,21 +54,26 @@ class LojaController {
 
             return res.status(200).json({ token })
         } catch (err) {
-            return res.status(500).send()
+            return res.status(500).send(err)
         }
     }
 
-    show(req: Request, res: Response) {
+    async show(req: Request, res: Response) {
         try {
-            let LojaData;
-            // const LojaData = knex("loja").where("ID", req.loja_id)
+            const LojaData = await knex("loja")
+                .where("ID", req.loja_id)
+                .first()
+
+            if (!LojaData)
+                return res.status(404).send()
+
             return res.status(200).json(LojaData)
         } catch (err) {
             return res.status(500).send()
         }
     }
 
-    update(req: Request, res: Response) {
+    async update(req: Request, res: Response) {
         const { 
             Nome, 
             Email,
@@ -80,8 +93,10 @@ class LojaController {
             CNPJ
         }
         try {
-            let UpdatedId;
-            // const UpdatedId = knex("loja").update(data)
+            const UpdatedId = await knex("loja")
+                .where("ID", req.loja_id)
+                .update(data)
+
             return res.status(200).json({ UpdatedId })
         } catch (err) {
             return res.status(500).send()

@@ -72,7 +72,7 @@ const Template: React.FC = () => {
               <IonImg alt={e.titulo} src={e.capa}></IonImg>
                 <IonItem className="ion-no-margin" lines="none" color="transparent">
                   <IonLabel>{e.titulo}</IonLabel>
-                  <IonRadio value={e.checked} />
+                  <IonRadio value={e.id} />
                 </IonItem>
               </IonCard>
             </IonCol>
