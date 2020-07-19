@@ -1,6 +1,4 @@
 import Menu from './components/Menu';
-import Home from './pages/Home';
-import Page1 from "./pages/Page1"
 import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -25,16 +23,41 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+/* Páginas */
+
+import Home from './pages/Template';
+import Template from './pages/Template';
+import Informacoes from './pages/Informacoes';
+import Produtos from './pages/Produtos';
+import Campanhas from './pages/Campanhas';
+import Pagamento from './pages/Pagamento';
+import Chatbot from './pages/Chatbot';
+import Dominio from './pages/Dominio';
+import Personalizacao from './pages/Personalizacao';
+import Finalizacao from './pages/Finalizacao';
+
+import Page1 from "./pages/Page1"
+
 const App: React.FC = () => {
 
-  return (
+  return ( 
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/home" component={Home} exact />
-            <Route path="/page1" component={Page1} exact />
+
+            <Route path="/passos/template" component={Template} exact />
+            <Route path="/passos/informacoes" component={Informacoes} exact />
+            <Route path="/passos/produtos" component={Produtos} exact />
+            <Route path="/passos/campanhas" component={Campanhas} exact />
+            <Route path="/passos/pagamento" component={Pagamento} exact />
+            <Route path="/passos/chatbot" component={Chatbot} exact />
+            <Route path="/passos/dominio" component={Dominio} exact />
+            <Route path="/passos/personalizacao" component={Personalizacao} exact />
+            <Route path="/passos/finalizacao" component={Finalizacao} exact />
+
             <Redirect from="/" to="/home" exact />
           </IonRouterOutlet>
         </IonSplitPane>
