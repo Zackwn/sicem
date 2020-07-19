@@ -1,9 +1,9 @@
 import { IonButton, IonIcon, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import {chevronForwardOutline} from 'ionicons/icons'
+import {chevronForwardOutline} from 'ionicons/icons';
 import React from 'react';
-import './Personalizacao.css';
+import './Intro.css';
 
-const Personalizacao: React.FC = () => {
+const Intro: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -11,20 +11,24 @@ const Personalizacao: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Escolher o Personalizacao</IonTitle>
+          <IonTitle>Seja bem vindo(a)!</IonTitle>
         </IonToolbar>
       </IonHeader>
 
-      <IonContent>
-        <h1>
-          Escolher o Personalizacao
-          </h1>
+      <IonContent class="ion-text-center">
+
+        <br />
+
+        <img src="/assets/imgs/logo.jpg" alt=""/>
+        <h4 className="ion-padding ion-bold">É muito fácil criar uma loja online para seu mercado... Vamos começar?</h4>
       </IonContent>
+
       <IonButton color="secondary" size="large" expand="full" routerLink="/passos/template" >
         Próximo <IonIcon icon={chevronForwardOutline}></IonIcon>
       </IonButton>
+
     </IonPage>
   );
 };
 
-export default Personalizacao;
+export default Intro;

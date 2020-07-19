@@ -1,4 +1,5 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonIcon, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {chevronForwardOutline} from 'ionicons/icons';
 import React from 'react';
 import './Pagamento.css';
 
@@ -6,24 +7,24 @@ const Pagamento: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Escolher o Pagamento</IonTitle>
+          <IonTitle>Definir o Gatway de Pagamento</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Escolher o Pagamento</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <h1>
-          Escolher o Pagamento
+          Gatway de Pagamento
           </h1>
       </IonContent>
+
+      <IonButton color="secondary" size="large" expand="full" routerLink="/passos/template" >
+        Próximo <IonIcon icon={chevronForwardOutline}></IonIcon>
+      </IonButton>
+
     </IonPage>
   );
 };

@@ -1,0 +1,10 @@
+.imagi {
+    height: 126px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.divi {
+    height: 80px;
+    max-height: 80px;
+}

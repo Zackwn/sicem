@@ -25,7 +25,8 @@ import './theme/variables.css';
 
 /* Páginas */
 
-import Home from './pages/Template';
+import Intro from './pages/Intro';
+import Home from './pages/Home';
 import Template from './pages/Template';
 import Informacoes from './pages/Informacoes';
 import Produtos from './pages/Produtos';
@@ -36,7 +37,6 @@ import Dominio from './pages/Dominio';
 import Personalizacao from './pages/Personalizacao';
 import Finalizacao from './pages/Finalizacao';
 
-import Page1 from "./pages/Page1"
 
 const App: React.FC = () => {
 
@@ -46,8 +46,9 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/home" component={Home} exact />
-
+            
+            <Route path="/inicio" component={Home} exact />
+            <Route path="/passos/introducao" component={Intro} exact />
             <Route path="/passos/template" component={Template} exact />
             <Route path="/passos/informacoes" component={Informacoes} exact />
             <Route path="/passos/produtos" component={Produtos} exact />
