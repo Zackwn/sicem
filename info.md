@@ -33,6 +33,8 @@ Retorno:
 
 ## /template-update
 
+Envio: template_id
+
 --------------------------
 
 ## /loja-read
