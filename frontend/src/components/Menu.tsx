@@ -24,14 +24,56 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Home',
-    url: '/home',
+    title: 'Tema',
+    url: '/passos/template',
     iosIcon: mailOutline,
     mdIcon: mailSharp
   },
   {
-    title: 'Page 1',
-    url: '/page1',
+    title: 'Informações',
+    url: '/passos/informacoes',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp
+  },
+  {
+    title: 'Produtos',
+    url: '/passos/produtos',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp
+  },
+  {
+    title: 'Campanhas',
+    url: '/passos/campanhas',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp
+  },
+  {
+    title: 'Layout de Pagamento',
+    url: '/passos/pagamento',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp
+  },
+  {
+    title: 'Chatbot',
+    url: '/passos/chatbot',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp
+  },
+  {
+    title: 'Domínio',
+    url: '/passos/dominio',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp
+  },
+  {
+    title: 'Personalização',
+    url: '/passos/personalizacao',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp
+  },
+  {
+    title: 'Finalização',
+    url: '/passos/finalizacao',
     iosIcon: mailOutline,
     mdIcon: mailSharp
   }
