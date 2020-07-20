@@ -15,11 +15,8 @@ const Finalizacao: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent className="ionic-center">
-
-        <br/>
-
         <h3 className="ion-padding">Enquanto terminamos de configurar sua Loja Online, converse com nosso Chatbot no Whatsapp.</h3>
-        <a target="_blank" href="https://web.whatsapp.com/send?phone=551148377404&text&source&data&app_absent=green-cloth">
+        <a target="_blank" href="https://api.whatsapp.com/send?phone=551148377404&text=green-cloth">
           <img src="https://robohash.org/Tadeu18" alt="Robo" /><br />
           <img className="img-center" src="assets/imgs/zap.png" alt="Conversar no Whatsapp" />
           </a>
