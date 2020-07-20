@@ -1,32 +1,33 @@
-import { IonFab, IonFabButton, IonButton, IonIcon, IonModal, IonSelect, IonSelectOption, IonCol, IonRow, IonGrid, IonCard, IonImg, IonInput, IonItem, IonThumbnail, IonLabel, IonSearchbar, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, IonCheckbox, IonCardHeader, IonCardTitle } from '@ionic/react';
+import { IonButton, IonIcon, IonModal, IonSelect, IonSelectOption, IonCol, IonRow, IonGrid, IonCard, IonInput, IonItem, IonLabel, IonSearchbar, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar} from '@ionic/react';
 import { chevronForwardOutline, add, search, trash } from 'ionicons/icons'
 import React from 'react';
 import './Produtos.css';
-import { Button } from '@material-ui/core';
+
+
+const listaProdutos = [
+  {"ID":"1",
+  "Nome":"Tapioca Rocha Goma Hidratada Porção Certa 70g",
+  "Capa":"/assets/imgs/produto_001.jpg",
+  "Valor1": "1,99",
+  "Valor2": "0,99"},
+  
+  {"ID":"2",
+  "Nome":"Farinha Mandioca Orgânica Mãe Terra Torrada 500g",
+  "Capa":"/assets/imgs/produto_002.jpg",
+  "Valor1":"3,00",
+  "Valor2":"1,93"},
+
+  {"ID":"3",
+  "Nome":"Milho Para Pipoca Fonte Nova Premium 400g",
+  "Capa":"/assets/imgs/produto_003.jpg",
+  "Valor1":"4,99",
+  "Valor2":"3,99"}
+];
 
 const Produtos: React.FC = () => {
 
   const [searchText, setSearchText] = React.useState('');
   const [showModal, setShowModal] = React.useState(false);
-  const [listaProdutos, setListaProdutos] = React.useState([
-    {"ID":"1",
-    "Nome":"Tapioca Rocha Goma Hidratada Porção Certa 70g",
-    "Capa":"https://www.bistek.com.br/media/catalog/product/cache/894d7a2e183d8da4095b1bf308cf0ba7/1/8/1821865_1.jpg",
-    "Valor1": "1,99",
-    "Valor2": "0,99"},
-    
-    {"ID":"2",
-    "Nome":"Farinha Mandioca Orgânica Mãe Terra Torrada 500g",
-    "Capa":"https://www.bistek.com.br/media/catalog/product/cache/f66bb40a841adb26d4cc38348e9dfc61/1/9/1908162_1.jpg",
-    "Valor1":"3,00",
-    "Valor2":"1,93"},
-
-    {"ID":"3",
-    "Nome":"Milho Para Pipoca Fonte Nova Premium 400g",
-    "Capa":"https://www.bistek.com.br/media/catalog/product/cache/894d7a2e183d8da4095b1bf308cf0ba7/1/6/1655116.jpg",
-    "Valor1":"4,99",
-    "Valor2":"3,99"}
-  ]);
 
   return (
     <IonPage>
@@ -38,22 +39,15 @@ const Produtos: React.FC = () => {
           <IonTitle>Adicionar Produtos</IonTitle>
         </IonToolbar>
       </IonHeader>
-
       <IonContent>
-
         <IonModal
           isOpen={showModal}
-          //cssClass='my-custom-class'
           swipeToClose={true}
-          //presentingElement={pageRef.current}
           onDidDismiss={() => setShowModal(false)}>
-          <p>This is modal content</p>
-          <IonButton onClick={() => setShowModal(false)}>Close Modal</IonButton>
+          <p>Janela para inserir os produtos</p>
+          <IonButton onClick={() => setShowModal(false)}>Fechar Janela</IonButton>
         </IonModal>
-
-
         <IonSearchbar placeholder="Digite para buscar" value={searchText} onIonChange={e => setSearchText(e.detail.value!)}></IonSearchbar>
-
         <IonGrid>
           <IonRow>
             <IonCol>
@@ -85,13 +79,12 @@ const Produtos: React.FC = () => {
           </IonSelect>
         </IonItem>
 
-
         {listaProdutos.map((e, index) => { 
         return <IonCard key={index}>
           <IonGrid>
             <IonRow>
               <IonCol size="12" size-xs="3">
-                <img className="imagi" src={e.Capa} />
+                <img className="imagi" src={e.Capa} alt={e.Nome}/>
               </IonCol>
               <IonCol size="12" size-xs="4">
                 <IonItem>
@@ -113,7 +106,6 @@ const Produtos: React.FC = () => {
           </IonGrid>
         </IonCard>
       })}
-
       </IonContent>
       <IonButton color="secondary" size="large" expand="full" routerLink="/passos/campanhas" >
         Próximo <IonIcon icon={chevronForwardOutline}></IonIcon>

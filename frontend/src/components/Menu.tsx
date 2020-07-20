@@ -4,15 +4,13 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote,
 } from '@ionic/react';
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { mailOutline, mailSharp } from 'ionicons/icons';
+import { arrowForwardOutline, arrowForwardSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -26,74 +24,59 @@ const appPages: AppPage[] = [
   {
     title: 'Introdução',
     url: '/passos/introducao',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   },
   {
     title: 'Tema',
     url: '/passos/template',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   },
   {
     title: 'Informações',
     url: '/passos/informacoes',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   },
   {
     title: 'Produtos',
     url: '/passos/produtos',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   },
   {
     title: 'Campanhas',
     url: '/passos/campanhas',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   },
   {
     title: 'Layout de Pagamento',
     url: '/passos/pagamento',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   },
   {
     title: 'Chatbot',
     url: '/passos/chatbot',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
-  },
-  {
-    title: 'Domínio',
-    url: '/passos/dominio',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
-  },
-  {
-    title: 'Personalização',
-    url: '/passos/personalizacao',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   },
   {
     title: 'Finalização',
     url: '/passos/finalizacao',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
+    iosIcon: arrowForwardOutline,
+    mdIcon: arrowForwardSharp
   }
 ]
 
 const Menu: React.FC = () => {
   const location = useLocation();
-
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>User</IonListHeader>
-          <IonNote>userEmail.com</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
