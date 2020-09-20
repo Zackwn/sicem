@@ -9,9 +9,9 @@ class LojaController {
     async login(req: Request, res: Response) {
         const { Email, Senha } = req.body
         try {
-            const loja = await knex("loja").where({Email}).first()
+            const loja = await knex("loja").where({ Email }).first()
 
-            if (!loja) 
+            if (!loja)
                 return res.status(401).json({ "Message": "Wrong password" })
 
             const isPassword = await bcrypt.compare(Senha, loja.Senha)
@@ -35,24 +35,26 @@ class LojaController {
     }
     async create(req: Request, res: Response) {
         const { Nome, Email, Senha } = req.body
-        const data = { Nome, Email, Senha, Ativada:false }
+        const data = { Nome, Email, Senha, Ativada: false }
         try {
-           
+
             const SenhaHash = await bcrypt.hash(Senha, 10)
 
-            data.Senha = SenhaHash      
-           
-            const newLojaID = await knex("loja").insert(data)
-            return res.send(newLojaID)
-            const token = jwt.sign(
-                String(newLojaID),
-                String(process.env.APP_SECRET),
-                {
-                    expiresIn: "7d"
-                }
-            )
+            data.Senha = SenhaHash
 
-            return res.status(200).json({ token })
+            // const newLojaID = await knex("loja").insert(data)
+            
+            // const token = jwt.sign(
+            //     String(newLojaID),
+            //     String(process.env.APP_SECRET),
+            //     {
+            //         expiresIn: "7d"
+            //     }
+            // )
+
+            const lojas = await knex("loja")
+
+            return res.status(200).json({ lojas, data })
         } catch (err) {
             return res.status(500).send(err)
         }
@@ -74,8 +76,8 @@ class LojaController {
     }
 
     async update(req: Request, res: Response) {
-        const { 
-            Nome, 
+        const {
+            Nome,
             Email,
             Telefone,
             Whatsapp,
@@ -84,7 +86,7 @@ class LojaController {
             CNPJ
         } = req.body
         const data = {
-            Nome, 
+            Nome,
             Email,
             Telefone,
             Whatsapp,
